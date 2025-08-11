@@ -123,5 +123,8 @@ class SUV extends Car {
 $car1 = new Sport("Porsche 911", "Gray", 314, 1800000000, 2);
 $car2 = new SUV("Fortuner", "White", 260, 800000000, 6);
 
-echo $car1->getCar(); echo "<br>";
+echo $car1->getCar();
+echo "<br>";
 echo $car2->getCar();
+echo "<hr>";
+
