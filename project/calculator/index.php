@@ -8,17 +8,27 @@
 </head>
 
 <body>
-    <h2>Kalkulator</h2>
-    <form action="proses.php" method="post">
-        <h3>Masukkan angka pertama : </h3>
-        <input type="text" name="angka1">
+    <h2>Kalkulator Sederhana</h2>
+    <form action="proses.php" method="POST">
+        <label for="angka1">Angka 1:</label>
+        <input type="number" name="angka1" id="angka1" required><br><br>
+        
+        <label for="angka2">Angka 2:</label>
+        <input type="number" name="angka2" id="angka2" required><br><br>
+        
+        <label for="angka3">Angka 3:</label>
+        <input type="number" name="angka3" id="angka3" required><br><br>
 
-        <h3>Masukkan angka kedua : </h3>
-        <input type="text" name="angka2">
+        <label for="operator">Operator:</label>
+        
+        <select name="operator" id="operator" required>
+            <option value="tambah">+</option>
+            <option value="kurang">-</option>
+            <option value="kali">*</option>
+            <option value="bagi">/</option>
+        </select><br><br>
 
-        <h3>Pilih Aritmatika : </h3>
-        <button name="tambah" value="+">+</button>
-        <button name="kurang" value="-">-</button>
+        <input type="submit" value="Hitung">
     </form>
 </body>
 
