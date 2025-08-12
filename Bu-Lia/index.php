@@ -1,11 +1,8 @@
 <?php
-include 'nilai.php';
-
-$mapel_query = $conn->query("SELECT * kode_mapel, nama_mapel from mata_pelajaran");
-$nilai_query = $conn->query("SELECT nilai.kode_nilai, siswa.Nama, mata_pelajaran.nama_mapel, nilai.Nilai from nilai join siswa on nilai.nis = siswa.NIS join mata-pelajaran on nilai.kode_mapel=mata_pelajaran.kode_mapel");
-
-
-
+include "koneksi.php";
+$siswa_query=$koneksi->query("select kode_mapel,nama_mapel from mata_pelajaran");
+$mapel_query=$koneksi->query("select NIS,Nama,Alamat,Jenis_kelamin,Telepon,Kelas from siswa");
+$nilai_query=$koneksi->query("select nilai.Kode_nilai,siswa.Nama,mata_peljaran.nama_mapel,nilai.Nilai from nilai join siswa on nilai.Nis=siswa.Nis join mata_pelajaran on nilai.kode_mapel=mata_pelajaran.kode_mapel");
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +32,14 @@ $nilai_query = $conn->query("SELECT nilai.kode_nilai, siswa.Nama, mata_pelajaran
     </select> <br> <br>
 </form>
 
+<table>
+    <tr>
+        <th>Kode Nilai</th>
+        <th>Nama Siswa</th>
+        <th>Mata Pelajaran</th>
+        <th>Nilai</th>
+    </tr>
+</table>
 
     <!-- <div class="container">
         <table class="table">
