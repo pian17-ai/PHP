@@ -4,7 +4,7 @@ include 'php.ini';
 $host="localhost";
 $user="root";
 $password="";
-$database="pian";
+$database="pians";
 
 $conn = new mysqli($host, $user, $password, $database);
 
