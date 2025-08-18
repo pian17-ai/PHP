@@ -1,10 +1,17 @@
 <?php
 
-include "php.ini";
+include 'php.ini';
 
+class Product
+{
+    public      $title, 
+                $writter, 
+                $publisher;
+                // $price;
 
-class Product {
-    protected $title, $writter, $publisher, $price;
+    protected   $discount=0;
+
+    private     $price;
 
     public function __construct($title, $writter, $publisher, $price)
     {
@@ -14,59 +21,71 @@ class Product {
         $this->price = $price;
     }
 
-    public function getLabel() {
+    public function getLabel()
+    {
         $str = "{$this->writter}, {$this->publisher}";
-
         return $str;
     }
 
-    public function getDetailsProduct() {
+    public function getDetail() {
         $str = "{$this->title} | {$this->getLabel()} | {$this->price}";
-
         return $str;
+    }
+
+    public function getPrice() {
+        return $this->price;
     }
 }
 
 class Komik extends Product {
     public $page;
-
+    
     public function __construct($title, $writter, $publisher, $price, $page)
     {
         parent::__construct($title, $writter, $publisher, $price);
         $this->page = $page;
     }
-
-    public function getDetailsProduct()
+    
+    public function getDetail()
     {
-        $str = "Komik : " . parent::getDetailsProduct() . " - {$this->page} Pages.";
-        
+        $str = "Komik : ". parent::getDetail() ." - {$this->page} Pages.";
         return $str;
+    }
+
+    public function getDiscount($discount) {
+        $disc = $this->price - ($this->price * $discount/100);
+        return $disc;
     }
 }
 
-class Anime extends Product{
+class Anime extends Product {
     public $time;
-
+    
     public function __construct($title, $writter, $publisher, $price, $time)
     {
         parent::__construct($title, $writter, $publisher, $price);
         $this->time = $time;
     }
 
-    public function getDetailsProduct()
+    public function getDetail()
     {
-        $str = "Anime : " . parent::getDetailsProduct() . " - {$this->time} Minutes.";
-
+        $str = "Komik : ". parent::getDetail() ." - {$this->time} Minutes.";
         return $str;
     }
 }
 
-$product1 = new Komik('Fumetsu no anata e', 'Yoshitoki Oima', 'Kodansha', 120000, 345);
+$product1 = new Komik('Fumetsu no anata e', 'Yoshitoki Oima', 'Kodansha', 120000, 135);
 $product2 = new Anime('Majo no tabitabi', 'Jougi Shiraishi', 'Square Enix', 149999, 180);
-
-echo $product1->getDetailsProduct();
+echo $product1->getDetail();
 echo "<br>";
-echo $product2->getDetailsProduct();
-echo "<hr>";
+echo $product2->getDetail();
 
+
+echo "<hr>";
+echo "Harga awal : ";
 echo $product1->price;
+echo "<br>";
+echo $product1->getDiscount(20);
+echo "<br>";
+// echo $product1->price;
+echo "<br>";

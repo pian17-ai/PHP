@@ -1,8 +1,10 @@
 <?php
-include "koneksi.php";
-$siswa_query=$koneksi->query("select kode_mapel,nama_mapel from mata_pelajaran");
-$mapel_query=$koneksi->query("select NIS,Nama,Alamat,Jenis_kelamin,Telepon,Kelas from siswa");
-$nilai_query=$koneksi->query("select nilai.Kode_nilai,siswa.Nama,mata_peljaran.nama_mapel,nilai.Nilai from nilai join siswa on nilai.Nis=siswa.Nis join mata_pelajaran on nilai.kode_mapel=mata_pelajaran.kode_mapel");
+include "php.ini";
+include "conn.php";
+
+$siswa_query=$conn->query("select kode_mapel,nama_mapel from mata_pelajaran");
+$mapel_query=$conn->query("select NIS,Nama,Alamat,Jenis_kelamin,Telepon,Kelas from siswa");
+$nilai_query=$conn->query("select nilai.Kode_nilai,siswa.Nama,mata_peljaran.nama_mapel,nilai.Nilai from nilai join siswa on nilai.Nis=siswa.Nis join mata_pelajaran on nilai.kode_mapel=mata_pelajaran.kode_mapel");
 ?>
 
 <!DOCTYPE html>
