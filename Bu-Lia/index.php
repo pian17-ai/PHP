@@ -15,8 +15,9 @@ $nilai_query = $conn->query("SELECT nilai.Kode_nilai, siswa.Nama, mata_pelajaran
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container">
-
+    <div class="container p-4">
+        <h1 class="fs-2">Data Siswa</h1>
+        <hr>
         <table class="table">
       <thead>
         <tr>
