@@ -1,9 +1,10 @@
 <?php
+include 'php.ini';
 
 $host="localhost";
 $user="root";
 $password="";
-$database="Latihan_pian";
+$database="pian";
 
 $conn = new mysqli($host, $user, $password, $database);
 

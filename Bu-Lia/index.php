@@ -1,69 +1,37 @@
-<?php
-include "php.ini";
-include "conn.php";
+<?php 
+include 'php.ini';
 
-$siswa_query=$conn->query("select kode_mapel,nama_mapel from mata_pelajaran");
-$mapel_query=$conn->query("select NIS,Nama,Alamat,Jenis_kelamin,Telepon,Kelas from siswa");
-$nilai_query=$conn->query("select nilai.Kode_nilai,siswa.Nama,mata_peljaran.nama_mapel,nilai.Nilai from nilai join siswa on nilai.Nis=siswa.Nis join mata_pelajaran on nilai.kode_mapel=mata_pelajaran.kode_mapel");
+include 'conn.php';
+
+$nilai_query = $conn->query("SELECT nilai.Kode_nilai, siswa.Nama, mata_pelajaran.nama_mapel, nilai.Nilai from nilai join siswa on nilai.Nis=siswa.NIS join mata_pelajaran on nilai.kode_mapel=mata_pelajaran.kode_mapel");
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous"> -->
-
+    <title>SIkma</title>
 </head>
-
 <body>
-    
-<form action="POST" action="simpan.php">
-    <label for="">Pilih siswa</label>
-    <select name="nis" id="" required>
-        <option value="">-Pilih Siswa-</option>
-        <?php 
-            while($s = $nilai_query->fetch_assoc()) {
-                ?>
-            <option value="<?= $s['nis'];?>"><?= $s['nama'] ?></option>
-                <?php
-            }
-        ?>
-    </select> <br> <br>
-</form>
+    <h2>Data Nilai siswa</h2>
+    <table>
+        <tr>
+            <th>s</th>
+            <th>s</th>
+            <th>s</th>
+            <th>s</th>
+        </tr>
 
-<table>
-    <tr>
-        <th>Kode Nilai</th>
-        <th>Nama Siswa</th>
-        <th>Mata Pelajaran</th>
-        <th>Nilai</th>
-    </tr>
-</table>
+        <?php while($n = $nilai_query->fetch_assoc()) { ?>
+            <tr>
+                <td><?= $n['Kode_nilai'] ?></td>
+                <td><?= $n['Nama'] ?></td>
+                <td><?= $n['nama_mapel'] ?></td>
+                <td><?= $n['Nilai'] ?></td>
+            </tr>
+        <? } ?>
 
-    <!-- <div class="container">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>sdad</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-            </tbody>
-        </table>
-    </div> -->
-
-
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script> -->
+    </table>
 </body>
-
 </html>
