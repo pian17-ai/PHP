@@ -1,18 +1,10 @@
-<?php
+<?php 
+
 include 'php.ini';
 include 'conn.php';
 
-$nilai_query = $conn->query("SELECT nilai.Kode_nilai, siswa.Nama, mata_pelajaran.nama_mapel, nilai.Nilai from nilai join siswa on nilai.Nis=siswa.NIS join mata_pelajaran on nilai.kode_nilai=mata_pelajaran.kode_mapel");
+$query = $conn->query("SELECT * from siswa");
 
-while ($n = $nilai_query->fetch_assoc()) {
-// while ($new = mysqli_fetch_array($nilai_query)) {
-    
+$n = $query->fetch_assoc();
+
 echo $n['Nama'];
-}
-
-
-// $new = mysqli_fetch_array($nilai_query);
-// echo $new['Nama'];
-
-
-?>
