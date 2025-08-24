@@ -45,7 +45,7 @@ if ($op == 'edit') {
 }
 
 if (isset($_POST['submit'])) {
-  $nis = $_POST['nis'];
+  $nis = $_POST['ni'];
   $nama = $_POST['nm'];
   $alamat = $_POST['almt'];
   $jenkel = $_POST['jnkel'];
@@ -61,13 +61,17 @@ if (isset($_POST['submit'])) {
     }
     
   } else {
-    $sql = "INSERT INTO siswa (`NIS`, `Nama`, `Alamat`, `Jenis_kelamin`, `Telepon`, `Kelas`) values ('$nis', '$nama', '$alamat', '$jenkel', '$telepon', '$kelas')";
-    $query = mysqli_query($conn, $sql);
-    
-    if ($query) {
-      $success = "Berhasil Menambahkan Data";
+    if ($nis=='') {
+      $error = "NIS wajib diisi semua";
     } else {
-      $error = "Error";
+      $sql = "INSERT INTO siswa (`NIS`, `Nama`, `Alamat`, `Jenis_kelamin`, `Telepon`, `Kelas`) values ('$nis', '$nama', '$alamat', '$jenkel', '$telepon', '$kelas')";
+      $query = mysqli_query($conn, $sql);
+      
+      if ($query) {
+        $success = "Berhasil Menambahkan Data";
+      } else {
+        $error = "Error";
+      }
     }
   }
 }
@@ -103,7 +107,7 @@ if (isset($_POST['submit'])) {
         <?php } ?>
     
         <?php if ($error) { ?>
-          <div class="alert alert-success" role="alert">
+          <div class="alert alert-danger" role="alert">
             <?php echo $error;
             header('Refresh:5;url=siswa.php');
             ?>
@@ -112,7 +116,7 @@ if (isset($_POST['submit'])) {
 
         <div class="input-group mb-3">
           <span class="input-group-text" id="inputGroup-sizing-default">NIS</span>
-          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="nis" id="nis" value="<?= $nis ?>">
+          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="ni" id="ni" value="<?= $nis ?>">
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text" id="inputGroup-sizing-default">Nama</span>
@@ -152,7 +156,7 @@ if (isset($_POST['submit'])) {
         </tr>
       </thead>
 
-      <tbody>
+      <tbody class="">
         <?php
         $sql = "SELECT * from siswa";
         $query = mysqli_query($conn, $sql);
