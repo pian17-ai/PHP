@@ -54,10 +54,10 @@ if (isset($_POST['submit'])) {
   
   
   if ($op == 'edit') {
-    $sql = "UPDATE siswa set NIS='$nis', Nama='$nama', Alamat='$alamat', Jenis_kelamin='$jenkel', Telepon='$telepon', Kelas='$kelas'";
+    $sql = "UPDATE siswa set NIS='$nis', Nama='$nama', Alamat='$alamat', Jenis_kelamin='$jenkel', Telepon='$telepon', Kelas='$kelas' where NIS='$nis'";
     $query = mysqli_query($conn, $sql);
     if ($query) {
-      $success = "Sukses mengganti";
+      $success = "Berhasil Mengganti Data";
     }
     
   } else {
@@ -89,10 +89,12 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
+
+  
   <div class="container p-4">
     <h1 class="fs-2">Data Siswa</h1>
     <hr>
-
+    
     
     <div class="container">
       <h1 class="fs-4">Edit Data</h1>
