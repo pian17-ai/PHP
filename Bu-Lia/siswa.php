@@ -89,7 +89,15 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a href="" class="btn">Siswa</a></li>
+        <li class="nav-item"><a href="" class="btn">Nilai</a></li>
+      </ul>
+</div>
+  </div>
+</navbar>
   
   <div class="container p-4">
     <h1 class="fs-2">Data Siswa</h1>

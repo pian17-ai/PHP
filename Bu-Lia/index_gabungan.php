@@ -29,25 +29,16 @@ $nilai_query = $conn->query("SELECT nilai.Kode_nilai, siswa.Nama, mata_pelajaran
           <th>Nama</th>
           <th>Nama Mapel</th>
           <th>Nilai</th>
-          <th>Edit or Delete</th>
         </tr>
       </thead>
 
       <tbody>
         <?php while ($n = $nilai_query->fetch_assoc()) { ?>
           <tr>
-            <td class="row"><?= $n['Kode_nilai'] ?></td>
+            <td><?= $n['Kode_nilai'] ?></td>
             <td><?= $n['Nama'] ?></td>
             <td><?= $n['nama_mapel'] ?></td>
             <td><?= $n['Nilai'] ?></td>
-            <td>
-              <a href="index.php?op=edit&id=<?= $n['Nama'] ?>">
-                <div class="btn btn-warning">Edit</div>
-              </a>
-              <a href="index.php?op=delete&id=<?= $n['Nama'] ?>" onclick="return confirm('Yakin Mau Hapus Data?')">
-                <div class="btn btn-danger">Delete</div>
-              </a>
-            </td>
           </tr>
         <?php } ?>
       </tbody>

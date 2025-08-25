@@ -1,0 +1,32 @@
+body {
+    background-color: rgb(42, 142, 182);
+
+}
+
+h1 {
+    color: rgb(228, 93, 93);
+    text-align: center;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.form-bg {
+    border: 4px solid black;
+    padding: 27px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img {
+    height: 200px;
+    width: 200px;
+}
+
+.form {
+
+    
+}
