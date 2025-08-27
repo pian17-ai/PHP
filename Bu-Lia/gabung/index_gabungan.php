@@ -1,7 +1,7 @@
 <?php
-include 'php.ini';
+include '../php.ini';
 
-include 'conn.php';
+include '../conn.php';
 
 $nilai_query = $conn->query("SELECT nilai.Kode_nilai, siswa.Nama, mata_pelajaran.nama_mapel, nilai.Nilai from nilai join siswa on nilai.Nis=siswa.NIS join mata_pelajaran on nilai.Kode_mapel=mata_pelajaran.kode_mapel");
 

@@ -1,5 +1,5 @@
 <?php
-include 'php.ini';
+include '../php.ini';
 
 $host="localhost";
 $user="root";

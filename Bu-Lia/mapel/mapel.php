@@ -1,6 +1,6 @@
 <?php
-include 'php.ini';
-include 'conn.php';
+include '../php.ini';
+include '../conn.php';
 
 
 $kode = '';
@@ -12,7 +12,7 @@ if (isset($_GET['op'])) {
     $op = '';
 }
 
-if ($op =='delete'){
+if ($op == 'delete') {
     $kode = $_GET['kode'];
     $sql = "DELETE from mata_pelajaran where kode_mapel='$kode'";
     $query = mysqli_query($conn, $sql);
@@ -75,13 +75,29 @@ if (isset($_POST['submit'])) {
 <body>
     <h1>Mata Pelajaran</h1>
 
-    <form method="post">
-        <span>Kode Mapel : </span>
-        <input type="text" name="kd" value="<?= $kode ?>">
-        <span>Nama Mapel : </span>
-        <input type="text" name="nm" value="<?= $nama ?>">
-        <button name="submit">Simpan</button>
-    </form>
+    <?php if ($op == 'edit') { ?>
+
+        <form method="post">
+            <span>Kode Mapel : </span>
+            <input type="text" name="kd" value="<?= $kode ?>" readonly>
+            <span>Nama Mapel : </span>
+            <input type="text" name="nm" value="<?= $nama ?>">
+            <button name="submit">Simpan</button>
+        </form>
+
+    <?php } if ($op == 'tambah') {?>
+
+        <form method="post">
+            <span>Kode Mapel : </span>
+            <input type="text" name="kd" value="<?= $kode ?>">
+            <span>Nama Mapel : </span>
+            <input type="text" name="nm" value="<?= $nama ?>">
+            <button name="submit">Simpan</button>
+        </form>
+
+    <?php } ?>
+
+    <a href="mapel.php?op=tambah">Tambah</a>
 
     <table border="1">
         <tr>
