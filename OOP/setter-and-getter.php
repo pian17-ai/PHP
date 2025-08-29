@@ -4,11 +4,7 @@ include 'php.ini';
 
 class Product
 {
-    private  $title, $writter, $publisher;
-
-    protected   $discount=0;
-
-    private     $price;
+    private $title, $writter, $publisher, $price, $discount;
 
     public function __construct($title, $writter, $publisher, $price)
     {
@@ -18,46 +14,92 @@ class Product
         $this->price = $price;
     }
 
+    // ------------------------------------------------
+
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    public function setNewTitle($newTitle)
+    {
+        $this->title = $newTitle;
+    }
+
+    public function getWritter()
+    {
+        return $this->writter;
+    }
+
+    public function setNewWritter($newWritter)
+    {
+        $this->writter = $newWritter;
+    }
+
+    public function getPublisher()
+    {
+        return $this->publisher;
+    }
+
+    public function setNewPublisher($newPublisher)
+    {
+        $this->publisher = $newPublisher;
+    }
+    
+    public function setNewPrice($newPrice) {
+        $this->price = $newPrice;
+    }
+
+    public function getPrice() {
+        return $this->price - ($this->price * $this->discount / 100);
+    }
+
+    public function getDiscount() {
+        return $this->discount;
+    }
+    
+    // -------------------------------------------------
+
     public function getLabel()
     {
         $str = "{$this->writter}, {$this->publisher}";
         return $str;
     }
 
-    public function getDetail() {
+    public function getDetail()
+    {
         $str = "{$this->title} | {$this->getLabel()} | {$this->price}";
         return $str;
     }
-
-    public function getPrice() {
-        return $this->price;
-    }
 }
 
-class Komik extends Product {
+class Komik extends Product
+{
     public $page;
-    
+
     public function __construct($title, $writter, $publisher, $price, $page)
     {
         parent::__construct($title, $writter, $publisher, $price);
         $this->page = $page;
     }
-    
+
     public function getDetail()
     {
-        $str = "Komik : ". parent::getDetail() ." - {$this->page} Pages.";
+        $str = "Komik : " . parent::getDetail() . " - {$this->page} Pages";
         return $str;
     }
 
-    public function getDiscount($discount) {
-        $disc = $this->price - ($this->price * $discount/100);
+    public function setDiscount($discount)
+    {
+        $disc = $this->price - ($this->price * $discount / 100);
         return $disc;
     }
 }
 
-class Anime extends Product {
+class Anime extends Product
+{
     public $time;
-    
+
     public function __construct($title, $writter, $publisher, $price, $time)
     {
         parent::__construct($title, $writter, $publisher, $price);
@@ -66,8 +108,14 @@ class Anime extends Product {
 
     public function getDetail()
     {
-        $str = "Komik : ". parent::getDetail() ." - {$this->time} Minutes.";
+        $str = "Anime : " . parent::getDetail() . " - {$this->time} Times";
         return $str;
+    }
+
+    public function getDiscount()
+    {
+        $disc = $this->price - ($this->price * $this->discount / 100);
+        return $disc;
     }
 }
 
@@ -76,13 +124,10 @@ $product2 = new Anime('Majo no tabitabi', 'Jougi Shiraishi', 'Square Enix', 1499
 echo $product1->getDetail();
 echo "<br>";
 echo $product2->getDetail();
-
-
 echo "<hr>";
-echo "Harga awal : ";
-echo $product1->price;
-echo "<br>";
-echo $product1->getDiscount(20);
-echo "<br>";
-// echo $product1->price;
-echo "<br>";
+
+// $product3 = new Product("Komik free fire sad");
+// echo $product3->getTitle();
+
+$product1->setNewWritter("Piann");
+echo $product1->getWritter();

@@ -69,7 +69,7 @@ class Anime extends Product {
 
     public function getDetail()
     {
-        $str = "Komik : ". parent::getDetail() ." - {$this->time} Minutes.";
+        $str = "Anime : ". parent::getDetail() ." - {$this->time} Minutes.";
         return $str;
     }
 }
