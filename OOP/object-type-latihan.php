@@ -33,3 +33,5 @@ echo $print->printer($movie2); echo "<br>";
 echo $print->printer($movie3); echo "<br>";
 echo $print->printer($movie4); echo "<br>";
 echo $print->printer($movie5); echo "<br>";
+
+echo "tes";
