@@ -3,8 +3,8 @@ include '../php.ini';
 
 $host="localhost";
 $user="root";
-$password="";
 $database="pian";
+$password="gr6882899";
 
 $conn = new mysqli($host, $user, $password, $database);
 
