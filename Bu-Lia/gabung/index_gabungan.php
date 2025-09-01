@@ -19,7 +19,8 @@ $nilai_query = $conn->query("SELECT nilai.Kode_nilai, siswa.Nama, mata_pelajaran
 
 <body>
   <div class="container p-4">
-    <h1 class="fs-2">Data Siswa</h1>
+    <a style="text-decoration: none; color:black" href="../index.php"><h1 class="fs-2">Data Siswa</h1></a>
+    
     <hr>
     <table class="table" style="margin-top: 34px;">
 

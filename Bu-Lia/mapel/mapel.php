@@ -73,7 +73,8 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-    <h1>Mata Pelajaran</h1>
+    <a style="text-decoration: none; color:black" href="../index.php"><h1>Mata Pelajaran</h1></a>
+    
 
     <?php if ($op == 'edit') { ?>
 
@@ -97,7 +98,7 @@ if (isset($_POST['submit'])) {
 
     <?php } ?>
 
-    <a href="mapel.php?op=tambah">Tambah</a>
+    <a href="mapel.php?op=tambah"><button>Tambah</button></a>
 
     <table border="1">
         <tr>

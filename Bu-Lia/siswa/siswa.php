@@ -104,7 +104,7 @@ if (isset($_POST['submit'])) {
   </navbar>
 
   <div class="container p-4">
-    <a href="siswa.php" class="btn"><h1 class="fs-1">Data Siswa</h1></a>
+    <a href="../index.php" class="btn"><h1 class="fs-1">Data Siswa</h1></a>
     <a href="siswa.php?op=tambah" class="btn btn-primary">Tambah Data</a>
     <hr>
 
