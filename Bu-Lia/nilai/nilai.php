@@ -112,43 +112,6 @@ if (isset($_POST['submit'])) {
 
         <?php if ($op == 'tambah') { ?>
 
-            <!-- <form method="post">
-                <span>Kode Nilai : </span>
-                <input type="text" name="kd" value="<?= $kode ?>">
-
-                <span>Pilih Siswa : </span>
-                <select name="siswa" id="">
-                    <?php
-                    $sql = 'SELECT * from siswa';
-                    $query = mysqli_query($conn, $sql);
-                    echo "<option selected value='Pilih Siswa'>Pilih Siswa</option>";
-                    while ($siswa = mysqli_fetch_array($query)) {
-                        echo "<option value='$siswa[NIS]'>$siswa[NIS] - $siswa[Nama]</option>";
-                    }
-                    ?>
-                </select>
-
-
-                <span>Pilih Pelajaran : </span>
-                <select name="pelajaran" id="">
-
-                    <?php
-                    $sql = 'SELECT * from mata_pelajaran';
-                    $query = mysqli_query($conn, $sql);
-                    echo "<option selected value='Pilih Mata Pelajaran'>Pilih Mata Pelajaran</option>";
-                    while ($mapel = mysqli_fetch_array($query)) {
-                        echo "<option value='$mapel[kode_mapel]'>$mapel[kode_mapel] - $mapel[nama_mapel]</option>";
-                    }
-                    ?>
-
-                </select>
-
-                <span>Nilai : </span>
-                <input type="text" name="nilai" value="<?= $nilai ?>">
-
-                <button name="submit">Simpan</button>
-            </form> -->
-
             <form action="" method="POST">
 
                 <div class="input-group mb-3">

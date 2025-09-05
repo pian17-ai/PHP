@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Homepage Fullscreen</title>
+  <title>DB Nilai Siswa</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -41,8 +41,8 @@
 
   <section class="hero">
     <div class="hero-content">
-      <h1 class="display-3 fw-bold">Welcome to SMKN64</h1>
-      <p class="lead">Data Nilai Siswa</p>
+      <h1 class="display-3 fw-bold">Selamat Datang di Database Siswa SMKN 64</h1>
+      <!-- <p class="lead">Data Nilai Siswa</p> -->
       <!-- <a href="#about" class="btn btn-primary btn-lg mt-3">Get Started</a> -->
     </div>
   </section>
