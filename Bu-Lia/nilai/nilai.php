@@ -74,9 +74,12 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nilai</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 </head>
 
 <body>
+    <?php include '../components/navbar.php' ?>
+
     <a style="text-decoration: none; color:black" href="../index.php">
         <h2>Nilai</h2>
     </a>
@@ -182,17 +185,20 @@ if (isset($_POST['submit'])) {
         ?>
             <tr>
                 <td><?= $mapel['Kode_nilai'] ?></td>
-                <td><?= $mapel['Nis']?> - <?php $nama_get = $conn->query("SELECT siswa.Nama from siswa where NIS='$mapel[Nis]'"); $nm = $nama_get->fetch_assoc(); echo $nm['Nama']?></td>
+                <td><?= $mapel['Nis'] ?> - <?php $nama_get = $conn->query("SELECT siswa.Nama from siswa where NIS='$mapel[Nis]'");
+                                            $nm = $nama_get->fetch_assoc();
+                                            echo $nm['Nama'] ?></td>
                 <td><?= $mapel['kode_mapel'] ?></td>
                 <td><?= $mapel['Nilai'] ?></td>
                 <td>
-                    <a href="nilai.php?op=edit&kode=<?= $mapel['Kode_nilai'] ?>&nis=<?= $mapel['Nis'] ?>&mapel=<?=$mapel['kode_mapel']?>"><button>Edit</button></a>
+                    <a href="nilai.php?op=edit&kode=<?= $mapel['Kode_nilai'] ?>&nis=<?= $mapel['Nis'] ?>&mapel=<?= $mapel['kode_mapel'] ?>"><button>Edit</button></a>
                     <a href="nilai.php?op=delete&kode=<?= $mapel['Kode_nilai'] ?>"
                         onclick="return confirm('Yakin mau hapus data?')"><button>Delete</button></a>
                 </td>
             </tr>
         <?php } ?>
     </table>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>
 
 </html>

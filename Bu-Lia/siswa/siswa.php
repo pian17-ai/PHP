@@ -93,6 +93,8 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
+  <?php include '../components/navbar.php' ?>
+
   <div class="container-fluid">
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav">
@@ -101,13 +103,11 @@ if (isset($_POST['submit'])) {
       </ul>
     </div>
   </div>
-  </navbar>
 
   <div class="container p-4">
-    <a href="../index.php" class="btn"><h1 class="fs-1">Data Siswa</h1></a>
+    <h1>Data Siswa</h1>
     <a href="siswa.php?op=tambah" class="btn btn-primary">Tambah Data</a>
     <hr>
-
 
     <?php if ($success) { ?>
       <div class="alert alert-success" role="alert">
@@ -116,18 +116,21 @@ if (isset($_POST['submit'])) {
         ?>
       </div>
     <?php } ?>
+
+    <?php if ($error) { ?>
+      <div class="alert alert-danger" role="alert">
+        <?php echo $error;
+        header('Refresh:5;url=siswa.php');
+        ?>
+      </div>
+    <?php } ?>
+
     <div class="container">
 
-      <?php if ($op == 'tambah' ){ ?>
+      <?php if ($op == 'tambah') { ?>
         <form action="" method="POST">
 
-          <?php if ($error) { ?>
-            <div class="alert alert-danger" role="alert">
-              <?php echo $error;
-              header('Refresh:5;url=siswa.php');
-              ?>
-            </div>
-          <?php } ?>
+
 
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">NIS</span>
@@ -170,97 +173,89 @@ if (isset($_POST['submit'])) {
   <?php } ?>
 
   <?php if ($op == 'edit') { ?>
-        <form action="" method="POST">
+    <form action="" method="POST">
 
-          <?php if ($error) { ?>
-            <div class="alert alert-danger" role="alert">
-              <?php echo $error;
-              header('Refresh:5;url=siswa.php');
-              ?>
-            </div>
-          <?php } ?>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">NIS</span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="ni" id="ni" value="<?= $nis ?>" readonly>
+      </div>
 
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">NIS</span>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="ni" id="ni" value="<?= $nis ?>" readonly>
-          </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Nama</span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="nm" id="nm" value="<?= $nama ?>">
+      </div>
 
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">Nama</span>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="nm" id="nm" value="<?= $nama ?>">
-          </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Alamat</span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="almt" id="almt" value="<?= $alamat ?>">
+      </div>
 
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">Alamat</span>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="almt" id="almt" value="<?= $alamat ?>">
-          </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Jenis Kelamin</span>
+        <select class="form-select" name="jnkel" id="jnkel" aria-label="Default select example">
+          <option selected>Pilih Jenis Kelamin</option>
+          <option value="L" <?= ($jenkel == 'L' ? 'selected' : '') ?>>L</option>
+          <option value="P" <?= ($jenkel == 'P' ? 'selected' : '') ?>>P</option>
+        </select>
 
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">Jenis Kelamin</span>
-            <select class="form-select" name="jnkel" id="jnkel" aria-label="Default select example">
-              <option selected>Pilih Jenis Kelamin</option>
-              <option value="L" <?= ($jenkel == 'L' ? 'selected' : '') ?>>L</option>
-              <option value="P" <?= ($jenkel == 'P' ? 'selected' : '') ?>>P</option>
-            </select>
+      </div>
 
-          </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Telepon</span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="tlp" value="<?= $telepon ?>">
+      </div>
 
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">Telepon</span>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="tlp" value="<?= $telepon ?>">
-          </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Kelas</span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="kls" id="kls" value="<?= $kelas ?>">
+      </div>
 
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">Kelas</span>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="kls" id="kls" value="<?= $kelas ?>">
-          </div>
-
-          <input type="submit" name="submit" value="Simpan Data" class="btn btn-primary">
-    </div>
-    </form>
-  <?php } ?>
-
-  <table class="table" style="margin-top: 34px;">
-
-    <thead>
-      <tr>
-        <th>NIS</th>
-        <th>Nama Nilai</th>
-        <th>Alamat</th>
-        <th>Jenis Kelamin</th>
-        <th>Telepon</th>
-        <th>Kelas</th>
-        <th>Edit or Delete</th>
-      </tr>
-    </thead>
-
-    <tbody class="">
-      <?php
-      $sql = "SELECT * from siswa";
-      $query = mysqli_query($conn, $sql);
-      while ($siswa = mysqli_fetch_array($query)) {
-      ?>
-        <tr>
-          <td><?= $siswa['NIS'] ?></td>
-          <td><?= $siswa['Nama'] ?></td>
-          <td><?= $siswa['Alamat'] ?></td>
-          <td><?= $siswa['Jenis_kelamin'] ?></td>
-          <td><?= $siswa['Telepon'] ?></td>
-          <td><?= $siswa['Kelas'] ?></td>
-          <td>
-            <a href="siswa.php?op=edit&nis=<?= $siswa['NIS'] ?>">
-              <div class="btn btn-warning">Edit</div>
-            </a>
-            <a href="siswa.php?op=delete&nis=<?= $siswa['NIS'] ?>" onclick="return confirm('Yakin Mau Hapus Data?')">
-              <div class="btn btn-danger">Delete</div>
-            </a>
-          </td>
-        </tr>
-      <?php } ?>
-    </tbody>
-  </table>
+      <input type="submit" name="submit" value="Simpan Data" class="btn btn-primary">
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+  </form>
+<?php } ?>
+
+<table class="table" style="margin-top: 34px;">
+
+  <thead>
+    <tr>
+      <th>NIS</th>
+      <th>Nama Nilai</th>
+      <th>Alamat</th>
+      <th>Jenis Kelamin</th>
+      <th>Telepon</th>
+      <th>Kelas</th>
+      <th>Edit or Delete</th>
+    </tr>
+  </thead>
+
+  <tbody class="">
+    <?php
+    $sql = "SELECT * from siswa";
+    $query = mysqli_query($conn, $sql);
+    while ($siswa = mysqli_fetch_array($query)) {
+    ?>
+      <tr>
+        <td><?= $siswa['NIS'] ?></td>
+        <td><?= $siswa['Nama'] ?></td>
+        <td><?= $siswa['Alamat'] ?></td>
+        <td><?= $siswa['Jenis_kelamin'] ?></td>
+        <td><?= $siswa['Telepon'] ?></td>
+        <td><?= $siswa['Kelas'] ?></td>
+        <td>
+          <a href="siswa.php?op=edit&nis=<?= $siswa['NIS'] ?>">
+            <div class="btn btn-warning">Edit</div>
+          </a>
+          <a href="siswa.php?op=delete&nis=<?= $siswa['NIS'] ?>" onclick="return confirm('Yakin Mau Hapus Data?')">
+            <div class="btn btn-danger">Delete</div>
+          </a>
+        </td>
+      </tr>
+    <?php } ?>
+  </tbody>
+</table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>
 
 </html>
