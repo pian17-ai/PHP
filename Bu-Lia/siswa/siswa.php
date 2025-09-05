@@ -125,7 +125,6 @@ if (isset($_POST['submit'])) {
       </div>
     <?php } ?>
 
-
     <div class="container">
 
       <?php if ($op == 'tambah') { ?>
@@ -212,7 +211,6 @@ if (isset($_POST['submit'])) {
       </div>
 
       <input type="submit" name="submit" value="Simpan Data" class="btn btn-primary">
-  </div>
   </form>
 <?php } ?>
 

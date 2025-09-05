@@ -123,14 +123,6 @@ if (isset($_POST['submit'])) {
         <?php }
         if ($op == 'tambah') { ?>
 
-            <!-- <form method="post">
-                <span>Kode Mapel : </span>
-                <input type="text" name="kd" value="<?= $kode ?>">
-                <span>Nama Mapel : </span>
-                <input type="text" name="nm" value="<?= $nama ?>">
-                <button name="submit">Simpan</button>
-            </form> -->
-
             <form action="" method="POST">
 
                 <?php if ($error) { ?>
