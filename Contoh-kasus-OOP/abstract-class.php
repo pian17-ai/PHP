@@ -1,20 +1,23 @@
 <?php
 
 //kasus 1
-abstract class Hewan {
+abstract class Hewan
+{
     private $gender;
 
     abstract function makeSound();
 }
 
-class Kitty extends Hewan {
+class Kitty extends Hewan
+{
     function makeSound()
     {
         return 'miaw';
     }
 }
 
-class Dog extends Hewan {
+class Dog extends Hewan
+{
     function makeSound()
     {
         return 'Guk';
@@ -22,18 +25,21 @@ class Dog extends Hewan {
 }
 
 //kasus 2
-abstract class Vehicle {
+abstract class Vehicle
+{
     abstract function move();
 }
 
-class Car extends Vehicle {
+class Car extends Vehicle
+{
     function move()
     {
         return 'Car use a road';
     }
 }
 
-class Motorcyle extends Vehicle {
+class Motorcyle extends Vehicle
+{
     function move()
     {
         return 'Motorcyle use a road motorcylce';
@@ -41,18 +47,21 @@ class Motorcyle extends Vehicle {
 }
 
 //kasus 3
-abstract class Payment {
+abstract class Payment
+{
     abstract function pay();
 }
 
-class CreditCardPayment extends Payment {
+class CreditCardPayment extends Payment
+{
     function pay()
     {
         return "Payment with Credit card";
     }
 }
 
-class QRIS extends Payment {
+class QRIS extends Payment
+{
     function pay()
     {
         return "Payment with QRIS";

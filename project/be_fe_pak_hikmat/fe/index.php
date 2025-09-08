@@ -18,7 +18,7 @@
         <li>Fahra</li>
       </ul>
 
-      <a href="http://localhost/PHP/project/Wep-64/WEP64/">
+      <a href="https://www.smkn64-jkt.sch.id/cgi-sys/suspendedpage.cgi">
 
         <img src="../img/WhatsApp Image 2025-08-25 at 11.02.16 AM.jpeg" class="img" alt="">
       </a>

@@ -33,10 +33,10 @@ if ($_POST['submit']) {
 <form action="" method="post" class="form-bg">
     <div class="form">
         <h1>Formulir Pendaftaran :</h1>
-        <p>Nama Lengkap: </p>
+        <p>Nama Lengkap: </p>           
         <input type="text" id="nm" name="nm">
         <p>Email: </p>
-        <input type="text" id="email" name="email">
+        <input type="text" id="email" name="email">32
         <p>Password </p>
         <input type="text" id="pw" name="pw">
         <input type="submit" name="submit" value="Simpan Data" id="submit" class="btn btn-primary submit">
