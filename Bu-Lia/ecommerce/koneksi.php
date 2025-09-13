@@ -1,9 +1,11 @@
 <?php
-include '../php.ini';
 
-$host="localhost";
-$user="root";
-$database="ecommerce";
-$password="gr6882899";
+// $host="localhost";
+// $user="root";
+// $database="ecommerce";
+// $password="gr6882899";
 
-$conn = new mysqli($host, $user, $password, $database);
+$conn = mysqli_connect("localhost", "root", "gr6882899", "ecommerce");
+if (!$conn) {
+    die("Koneksi gagal: " . mysqli_connect_error());
+}
