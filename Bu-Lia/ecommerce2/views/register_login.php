@@ -1,3 +1,62 @@
+<?php
+
+session_start();
+
+include '../config/php.ini';
+include '../config/connection.php';
+require_once '../models/User.php';
+
+$db = new Database();
+$user = new User($db);
+
+$id = $name = $email = $password = $phone = $address = "";
+
+// if(isset($_GET['submit'])) {
+//     $data = $user->getUser($_GET['id']);
+//     $id = $data['id'];
+//     $name = $data['name'];
+//     $email = $data['email'];
+//     $password = $data['password'];
+//     $address = $data['address'];
+
+
+
+// }
+
+if (isset($_POST['save'])) {
+    $data = [
+        'id' => $_POST['id'],
+        'name' => $_POST['name'],
+        'email' => $_POST['email'],
+        'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
+        'phone' => $_POST['phone'],
+        'address' => $_POST['address']
+    ];
+
+    if ($user->insert($data)) {
+        header("Location: index.php");
+    }
+    
+}
+
+if (isset($_POST['login'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $data = $user->getUser($email);
+
+    if ($data && password_verify($password, $data['password'])) {
+        $_SESSION['user_id'] = $data['id_user'];
+        $_SESSION['user_name'] = $data['name'];
+        header("Location: index.php"); // pindah ke halaman dashboard
+        exit;
+    } else {
+        echo "<div class='alert alert-danger'>Email atau Password salah</div>";
+    }
+}
+
+?>
+
 <!doctype html>
 <html lang="id">
 
@@ -37,63 +96,56 @@
                     </li>
                 </ul>
 
-                <!-- Tab Content -->
                 <div class="tab-content" id="pills-tabContent">
-                    <!-- Login Form -->
                     <div class="tab-pane fade show active" id="login" role="tabpanel">
                         <div class="card shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title mb-4">Login ke TokoKita</h5>
-                                <form>
+                                <form method="post">
                                     <div class="mb-3">
                                         <label for="loginEmail" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="loginEmail" required>
+                                        <input type="email" class="form-control" id="loginEmail" name="email" value="<?= $email ?>" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="loginPassword" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="loginPassword" required>
+                                        <input type="password" class="form-control" id="loginPassword" name="password" value="<?= $password ?>" required>
                                     </div>
-                                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                                    <button name="login" type="submit" class="btn btn-primary w-100">Login</button>
                                 </form>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Register Form -->
                     <div class="tab-pane fade" id="register" role="tabpanel">
                         <div class="card shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title mb-4">Buat Akun Baru</h5>
-                                <form>
+                                <form method="post">
                                     <div class="mb-3">
                                         <label for="registerName" class="form-label">Id User</label>
-                                        <input type="text" class="form-control" id="registerName" required>
+                                        <input value="<?= $id ?>" type="text" class="form-control" id="id" name="id" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="registerName" class="form-label">Name</label>
-                                        <input type="text" class="form-control" id="registerName" required>
+                                        <input value="<?= $name ?>" type="text" class="form-control" id="name" name="name" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="registerEmail" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="registerEmail" required>
+                                        <input value="<?= $email ?>" type="email" class="form-control" id="email" name="email" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="registerPassword" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="registerPassword" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="registerConfirm" class="form-label">Konfirmasi Password</label>
-                                        <input type="password" class="form-control" id="registerConfirm" required>
+                                        <label class="form-label">Password</label>
+                                        <input value="<?= $password ?>" type="password" class="form-control" id="password" name="password" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="registerName" class="form-label">Phone</label>
-                                        <input type="text" class="form-control" id="registerName" required>
+                                        <input value="<?= $phone ?>" type="text" class="form-control" id="phone" name="phone" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="registerName" class="form-label">Address</label>
-                                        <input type="text" class="form-control" id="registerName" required>
+                                        <input value="<?= $address ?>" type="text" class="form-control" id="address" name="address" required>
                                     </div>
-                                    <button type="submit" class="btn btn-success w-100">Register</button>
+                                    <button name="save" type="submit" class="btn btn-success w-100">Register</button>
                                 </form>
                             </div>
                         </div>
@@ -103,7 +155,6 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

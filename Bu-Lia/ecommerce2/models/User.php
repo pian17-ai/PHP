@@ -1,6 +1,6 @@
 <?php 
 
-require_once __DIR__ . '../config/connection.php';
+require_once __DIR__ . '/../config/connection.php';
 
 class User {
     private $db;
@@ -15,13 +15,13 @@ class User {
         return $this->db->query($sql);
     }
 
-    public function getUser($id) {
-        $sql = "SELECT * from users where id_user='$id'";
+    public function getUser($email) {
+        $sql = "SELECT * from users where email='$email'";
         return $this->db->query($sql)->fetch_assoc();
     }
 
     public function insert ($data) {
-        $sql = "INSERT into users values (id_user='{$data['id']}', name='{$data['name']}', email='{$data['email']}', password='{$data['$password']}', phone='{$data['phone']}', address='{$data['address']}')";
+        $sql = "INSERT into users values ('{$data['id']}', '{$data['name']}', '{$data['email']}', '{$data['password']}', '{$data['phone']}', '{$data['address']}')";
         return $this->db->query($sql);
     }
 
