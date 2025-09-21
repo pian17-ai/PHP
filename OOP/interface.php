@@ -1,8 +1,51 @@
 <?php
-
 include 'php.ini';
 
-class Product
+interface InfoProduct {
+    public function getInfoProduct();
+}
+
+// interface Buah {
+//     public function makan();
+//     public function setWarna($warna);
+// }
+
+// interface Benda {
+//     public function setUkuran($ukuran);
+// }
+
+// class Apel implements Buah {
+//     protected $warna;
+//     public function makan()
+//     {
+//         return "habis";
+//     }
+
+//     public function setWarna($warna)
+//     {
+//         $this->warna = $warna;
+//     }
+// }
+
+// class Jeruk implements Buah, Benda {
+//     protected $warna, $ukuran;
+//     public function makan()
+//     {
+//         return "habis";
+//     }
+
+//     public function setWarna($warna)
+//     {
+//         $this->warna = $warna;
+//     }
+
+//     public function setUkuran($ukuran)
+//     {
+//         $this->ukuran = $ukuran;
+//     }
+// }
+
+abstract class Product
 {
     private $title, $writter, $publisher, $price, $discount;
 
