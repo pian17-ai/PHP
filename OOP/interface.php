@@ -1,53 +1,15 @@
 <?php
 include 'php.ini';
 
-interface InfoProduct {
+interface InfoProduct
+{
     public function getInfoProduct();
 }
 
-// interface Buah {
-//     public function makan();
-//     public function setWarna($warna);
-// }
-
-// interface Benda {
-//     public function setUkuran($ukuran);
-// }
-
-// class Apel implements Buah {
-//     protected $warna;
-//     public function makan()
-//     {
-//         return "habis";
-//     }
-
-//     public function setWarna($warna)
-//     {
-//         $this->warna = $warna;
-//     }
-// }
-
-// class Jeruk implements Buah, Benda {
-//     protected $warna, $ukuran;
-//     public function makan()
-//     {
-//         return "habis";
-//     }
-
-//     public function setWarna($warna)
-//     {
-//         $this->warna = $warna;
-//     }
-
-//     public function setUkuran($ukuran)
-//     {
-//         $this->ukuran = $ukuran;
-//     }
-// }
-
-abstract class Product
+class Product
 {
-    private $title, $writter, $publisher, $price, $discount;
+    private $title, $writter, $publisher, $price;
+    protected $discount = 0; // default 0
 
     public function __construct($title, $writter, $publisher, $price)
     {
@@ -57,13 +19,12 @@ abstract class Product
         $this->price = $price;
     }
 
-    // ------------------------------------------------
+    // Getter & Setter -----------------------------
 
     public function getTitle()
     {
         return $this->title;
     }
-
     public function setNewTitle($newTitle)
     {
         $this->title = $newTitle;
@@ -73,7 +34,6 @@ abstract class Product
     {
         return $this->writter;
     }
-
     public function setNewWritter($newWritter)
     {
         $this->writter = $newWritter;
@@ -83,40 +43,49 @@ abstract class Product
     {
         return $this->publisher;
     }
-
     public function setNewPublisher($newPublisher)
     {
         $this->publisher = $newPublisher;
     }
-    
-    public function setNewPrice($newPrice) {
+
+    public function setNewPrice($newPrice)
+    {
         $this->price = $newPrice;
     }
 
-    public function getPrice() {
+    public function setDiscount($discount)
+    {
+        $this->discount = $discount;
+    }
+    public function getDiscount()
+    {
+        return $this->discount;
+    }
+
+    public function getPrice()
+    {
         return $this->price - ($this->price * $this->discount / 100);
     }
 
-    public function getDiscount() {
-        return $this->discount;
-    }
-    
-    // -------------------------------------------------
+    // Utility methods -----------------------------
 
     public function getLabel()
     {
-        $str = "{$this->writter}, {$this->publisher}";
-        return $str;
+        return "{$this->writter}, {$this->publisher}";
+    }
+
+    public function getInfo()
+    {
+        return "$this->writter, $this->publisher";
     }
 
     public function getDetail()
     {
-        $str = "{$this->title} | {$this->getLabel()} | {$this->price}";
-        return $str;
+        return "{$this->title} | {$this->getLabel()} | Rp" . number_format($this->getPrice(), 0, ',', '.');
     }
 }
 
-class Komik extends Product
+class Komik extends Product implements InfoProduct
 {
     public $page;
 
@@ -126,20 +95,13 @@ class Komik extends Product
         $this->page = $page;
     }
 
-    public function getProductDetail()
+    public function getInfoProduct()
     {
-        $str = "Komik : " . parent::getDetail() . " - {$this->page} Pages";
-        return $str;
-    }
-
-    public function setDiscount($discount)
-    {
-        $disc = $this->price - ($this->price * $discount / 100);
-        return $disc;
+        return "Komik : " . parent::getDetail() . " - {$this->page} Halaman";
     }
 }
 
-class Anime extends Product
+class Anime extends Product implements InfoProduct
 {
     public $time;
 
@@ -149,28 +111,40 @@ class Anime extends Product
         $this->time = $time;
     }
 
-    public function getProductDetail()
+    public function getInfoProduct()
     {
-        $str = "Anime : " . parent::getDetail() . " - {$this->time} Times";
-        return $str;
-    }
-
-    public function getDiscount()
-    {
-        $disc = $this->price - ($this->price * $this->discount / 100);
-        return $disc;
+        return "Anime : " . parent::getDetail() . " - {$this->time} Menit";
     }
 }
 
-$product1 = new Komik('Fumetsu no anata e', 'Yoshitoki Oima', 'Kodansha', 120000, 135);
-$product2 = new Anime('Majo no tabitabi', 'Jougi Shiraishi', 'Square Enix', 149999, 180);
-echo $product1->getDetail();
+class Game extends Product implements InfoProduct
+{
+    public $playTime;
+
+    public function __construct($title, $writter, $publisher, $price, $playTime)
+    {
+        parent::__construct($title, $writter, $publisher, $price);
+        $this->playTime = $playTime;
+    }
+
+    public function getInfoProduct()
+    {
+        return "Game : " . parent::getDetail() . " ~ {$this->playTime} Jam";
+    }
+}
+
+// ----------------------
+// TESTING
+// ----------------------
+$product1 = new Komik('Fumetsu no Anata e', 'Yoshitoki Oima', 'Kodansha', 120000, 135);
+$product2 = new Anime('Majo no Tabitabi', 'Jougi Shiraishi', 'Square Enix', 149999, 180);
+
+$product1->setDiscount(20); // diskon 20%
+
+echo $product1->getInfoProduct();
 echo "<br>";
-echo $product2->getDetail();
+echo $product2->getInfoProduct();
 echo "<hr>";
 
-// $product3 = new Product("Komik free fire sad");
-// echo $product3->getTitle();
-
 $product1->setNewWritter("Piann");
-echo $product1->getWritter();
+echo "Penulis baru: " . $product1->getWritter();
