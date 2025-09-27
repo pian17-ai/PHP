@@ -1,11 +1,16 @@
 <?php
+// class Database {
+//     private $host = "localhost";
+//     private $user = "root";
+//     private $pass = "gr6882899";
+//     private $dbname = "ecommerce";
+//     public $conn;
 
-// $host="localhost";
-// $user="root";
-// $database="ecommerce";
-// $password="gr6882899";
-
-$conn = mysqli_connect("localhost", "root", "gr6882899", "ecommerce");
-if (!$conn) {
-    die("Koneksi gagal: " . mysqli_connect_error());
-}
+//     public function __construct() {
+//         $this->conn = new mysqli($this->host, $this->user, $this->pass, $this->dbname);
+//         if ($this->conn->connect_error) {
+//             die("Koneksi gagal: " . $this->conn->connect_error);
+//         }
+//     }
+// }
+?>
