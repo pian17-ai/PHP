@@ -5,16 +5,16 @@ class App {
     public function __construct()
     {
         $url = $this->parseURL();
-        echo "I very love Jihan";
         vd($url);
     }
 
-    public function parseURL () {
+    public function parseURL() {
         if (isset($_GET['url'])) {
-            $url = rtrim($_GET['url'], '/');
+            $url = $_GET['url'];
+            $url = rtrim($url, '/');
             $url = filter_var($url, FILTER_SANITIZE_URL);
             $url = explode('/', $url);
+            return $url;
         }
-        return $url;
     }
 }

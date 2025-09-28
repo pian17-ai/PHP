@@ -1,6 +1,5 @@
 <?php
 
-require_once 'helpers/php.ini';
-require_once 'helpers/vd.php';
-require_once 'core/App.php';
-require_once 'core/Controller.php';
+require_once '../app/helpers/php.ini';
+require_once '../app/core/App.php';
+require_once '../app/core/Controller.php';
