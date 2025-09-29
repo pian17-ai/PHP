@@ -41,17 +41,7 @@ require_once 'config.php';
                         <td><?= $data['nama'] ?></td>
                         <td><?= $data['jurusan'] ?></td>
                         <td>
-                            <?php
-                            if ($data['nama'] == 'Jihan Syahbani') {
-                            ?>
-                                <a href="hapus.php?id=<?= $data['id'] ?>" onclick="return confirm('Yakin mau hapus my fineshyt 🤭❤️❤️?')"><button>Hapus</button></a>
-                            <?php
-                            } else {
-                            ?>
-                                <a href="hapus.php?id=<?= $data['id'] ?>" onclick="return confirm('Yakin mau hapus data?')"><button>Hapus</button></a>
-                            <?php
-                            }
-                            ?>
+                            <a href="hapus.php?id=<?= $data['id'] ?>" onclick="return confirm('Yakin mau hapus data?')"><button>Hapus</button></a>
                             <a href="form.php?id=<?= $data['id'] ?>"><button>Edit</button></a>
                         </td>
                     </tr>
