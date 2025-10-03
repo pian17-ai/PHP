@@ -83,11 +83,6 @@ if (isset($_POST['save'])) {
     <?php } else { ?>
         <form method="post">
             <input type="hidden" name="mode" value="<?= isset($_GET['edit']) ? "edit" : "tambah" ?>">
-
-            <!-- <div class="mb-3">
-                <label>Id Product</label>
-                <input type="text" name="id" class="form-control" value="<?= $id ?>" <?= isset($_GET['edit']) ? "readonly" : "" ?> required>
-            </div> -->
             <div class="mb-3">
                 <label>Name Product</label>
                 <input type="text" name="name" class="form-control" value="<?= $name ?>" required>

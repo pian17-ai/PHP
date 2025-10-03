@@ -18,23 +18,7 @@
                     <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
                     <li class="nav-item"><label class="nav-link" for=""><?= $_SESSION['user_name'] ?></label></li>
                 <?php }  ?>
-                <!-- <li class="nav-item">
-                    <a class="btn btn-outline-light ms-2" href="#" data-bs-toggle="modal" data-bs-target="#cartModal">Keranjang (0)</a>
-                </li> -->
             </ul>
         </div>
     </div>
 </nav>
-
-<!-- <nav>
-  <a href="index.php">Home</a> |
-  <?php if (isset($_SESSION['user_id'])): ?>
-    Halo, <?= htmlspecialchars($_SESSION['user_name']) ?> |
-    <a href="logout.php">Logout</a>
-  <?php else: ?>
-    <a href="login.php">Login</a> |
-    <a href="register.php">Register</a>
-  <?php endif; ?>
-</nav>
-<hr>
- -->

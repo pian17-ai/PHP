@@ -1,6 +1,6 @@
 <?php
 session_start();
-var_dump($_SESSION);
+// var_dump($_SESSION);
 // if (!isset($_SESSION['user_id'])) {
 //     header("Location: register_login.php");
 //     exit;
@@ -19,7 +19,7 @@ $orders = new Orders($db);
 
 $data = [
     'id_product' => $_POST['id_product'],
-    'user_id'    => $_SESSION['id_user'],
+    'user_id'    => $_SESSION['user_id'],
     'quantity'   => 1,
     'price'      => $_POST['price']
 ];

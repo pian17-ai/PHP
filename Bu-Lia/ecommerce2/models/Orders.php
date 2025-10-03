@@ -15,7 +15,8 @@ class Orders
     {
         $sql = "SELECT o.*, p.name_product, p.img, p.price, p.description
                 FROM orders o
-                JOIN products p ON o.id_product = p.id_product";
+                JOIN products p ON o.id_product = p.id_product
+                WHERE id_user='{$_SESSION['user_id']}'";
         return $this->db->query($sql);
     }
 
@@ -32,11 +33,9 @@ class Orders
     {
         $id_product = $data['id_product'];
         $user_id    = $data['user_id'];
-        $quantity   = $data['quantity'];
-        $price      = $data['price'];
 
-        $sql = "INSERT INTO orders (id_product, user_id, quantity, price_at_order, created_at)
-                VALUES ('$id_product', '$user_id', '$quantity', '$price', NOW())";
+        $sql = "INSERT INTO orders (id_product, id_user, order_date, status)
+                VALUES ('$id_product', '$user_id', NOW(), 'pending')";
 
         return $this->db->query($sql);
     }
