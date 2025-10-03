@@ -21,7 +21,7 @@ class User {
     }
 
     public function insert ($data) {
-        $sql = "INSERT into users values ('{$data['id']}', '{$data['name']}', '{$data['email']}', '{$data['password']}', '{$data['phone']}', '{$data['address']}')";
+        $sql = "INSERT INTO `users` (`id_user`, `name`, `email`, `password`, `phone`, `address`) VALUES (NULL, '{$data['name']}', '{$data['email']}', '{$data['password']}', '{$data['phone']}', '{$data['address']}');";
         return $this->db->query($sql);
     }
 

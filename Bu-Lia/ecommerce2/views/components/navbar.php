@@ -6,19 +6,35 @@
         </button>
         <div class="collapse navbar-collapse" id="navMenu">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="/PHP/Bu-Lia/ecommerce2/views/index.php"">Home</a></li>
+                <li class="nav-item"><a class="nav-link <?= $home_active ?>" href="/PHP/Bu-Lia/ecommerce2/views/index.php"">Home</a></li>
                 <!-- <li class=" nav-item"><a class="nav-link" href="#">Kategori</a></li> -->
                 <?php
                 if (!isset($_SESSION['user_id'])) {
                 ?>
-                    <li class="nav-item"><a class="nav-link" href="/PHP/Bu-Lia/ecommerce2/views/register_login.php">Login / Register</a></li>
+                    <li class="nav-item"><a class="nav-link <?= $login_register ?>" href="/PHP/Bu-Lia/ecommerce2/views/register_login.php">Login / Register</a></li>
                 <?php } else { ?>
-                    <li class="nav-item"><a class="nav-link" href="/PHP/Bu-Lia/ecommerce2/views/register_login.php"><?= $_SESSION['user_name'] ?></a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="/PHP/Bu-Lia/ecommerce2/views/logout.php"><?= $_SESSION['user_name'] ?></a></li> -->
+                    <li class="nav-item"><a href="orders.php" class="nav-link <?= $order_active ?>">Orders</a></li>
+                    <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
+                    <li class="nav-item"><label class="nav-link" for=""><?= $_SESSION['user_name'] ?></label></li>
                 <?php }  ?>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="btn btn-outline-light ms-2" href="#" data-bs-toggle="modal" data-bs-target="#cartModal">Keranjang (0)</a>
-                </li>
+                </li> -->
             </ul>
         </div>
     </div>
 </nav>
+
+<!-- <nav>
+  <a href="index.php">Home</a> |
+  <?php if (isset($_SESSION['user_id'])): ?>
+    Halo, <?= htmlspecialchars($_SESSION['user_name']) ?> |
+    <a href="logout.php">Logout</a>
+  <?php else: ?>
+    <a href="login.php">Login</a> |
+    <a href="register.php">Register</a>
+  <?php endif; ?>
+</nav>
+<hr>
+ -->

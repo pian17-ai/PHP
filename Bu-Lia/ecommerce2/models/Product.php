@@ -21,7 +21,7 @@ class Product {
     }
 
     public function insert($data) {
-        $sql = "INSERT into products values ('{$data['id']}', '{$data['name']}', '{$data['desc']}', '{$data['price']}', '{$data['stock']}', '{$data['img']}')";
+        $sql = "INSERT INTO `orders` (`id_order`, `id_user`, `id_product`, `order_date`, `status`) VALUES (NULL, '{$data['id_user']}', '{$data['id_product']}', '{$data['order_date']}', 'pending');";
         return $this->db->query($sql);
     }
 

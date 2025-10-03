@@ -8,24 +8,22 @@ require_once '../models/User.php';
 
 $db = new Database();
 $user = new User($db);
+$error = "";
+$login_register = "active";
 
-$id = $name = $email = $password = $phone = $address = "";
+$name = $email = $password = $phone = $address = "";
 
-// if(isset($_GET['submit'])) {
-//     $data = $user->getUser($_GET['id']);
-//     $id = $data['id'];
-//     $name = $data['name'];
-//     $email = $data['email'];
-//     $password = $data['password'];
-//     $address = $data['address'];
-
-
-
+// if ($data && password_verify($password, $data['password'])) {
+//     session_regenerate_id(true); // mencegah session fixation
+//     $_SESSION['user_id'] = $data['id_user'];
+//     $_SESSION['user_name'] = $data['name'];
+//     header("Location: index.php"); 
+//     exit;
 // }
+
 
 if (isset($_POST['save'])) {
     $data = [
-        'id' => $_POST['id'],
         'name' => $_POST['name'],
         'email' => $_POST['email'],
         'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
@@ -51,7 +49,7 @@ if (isset($_POST['login'])) {
         header("Location: index.php"); // pindah ke halaman dashboard
         exit;
     } else {
-        echo "<div class='alert alert-danger'>Email atau Password salah</div>";
+        $error = "<div class='alert alert-danger'>Email atau Password salah</div>";
     }
 }
 
@@ -101,6 +99,9 @@ if (isset($_POST['login'])) {
                         <div class="card shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title mb-4">Login ke TokoKita</h5>
+                                <?= 
+                                    $error;
+                                ?>
                                 <form method="post">
                                     <div class="mb-3">
                                         <label for="loginEmail" class="form-label">Email</label>
@@ -121,10 +122,6 @@ if (isset($_POST['login'])) {
                             <div class="card-body">
                                 <h5 class="card-title mb-4">Buat Akun Baru</h5>
                                 <form method="post">
-                                    <div class="mb-3">
-                                        <label for="registerName" class="form-label">Id User</label>
-                                        <input value="<?= $id ?>" type="text" class="form-control" id="id" name="id" required>
-                                    </div>
                                     <div class="mb-3">
                                         <label for="registerName" class="form-label">Name</label>
                                         <input value="<?= $name ?>" type="text" class="form-control" id="name" name="name" required>

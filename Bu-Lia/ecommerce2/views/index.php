@@ -7,8 +7,14 @@ ini_set('display_errors', 1);
 
 require_once '../models/Product.php';
 
+if (!isset($_SESSION['user_id'])) {
+  header("Location: register_login.php");
+  exit;
+}
+
 $db = new Database;
 $product = new Product($db);
+$home_active = "active"
 
 ?>
 
@@ -70,7 +76,14 @@ $product = new Product($db);
               </p>
               <div class="mt-auto d-flex justify-content-between align-items-center">
                 <strong class="fs-5">Rp<?= $row['price'] ?></strong>
-                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#buyModal" data-product="Nama Produk 1" data-price="Rp120.000">Beli</button>
+
+                <form method="POST" action="order_add.php">
+                  <input type="hidden" name="id_product" value="<?= $row['id_product'] ?>">
+                  <input type="hidden" name="price" value="<?= $row['price'] ?>">
+                  <button type="submit" class="btn btn-primary btn-sm">Beli</button>
+                </form>
+                <!-- <button class="btn btn-primary btn-sm">Beli</button> -->
+
               </div>
             </div>
           </div>
@@ -87,7 +100,7 @@ $product = new Product($db);
   </footer>
 
 
-  <div class="modal fade" id="buyModal" tabindex="-1" aria-hidden="true">
+  <!-- <div class="modal fade" id="buyModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -107,10 +120,10 @@ $product = new Product($db);
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
-  <div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
+  <!-- <div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -126,11 +139,11 @@ $product = new Product($db);
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
+  <!-- <script>
     // Simple client-side cart (for demo only)
     const cart = [];
     const cartCountButton = document.querySelector('.navbar .btn-outline-light');
@@ -200,7 +213,7 @@ $product = new Product($db);
 
     // init
     updateCartUI();
-  </script>
+  </script> -->
 </body>
 
 </html>
