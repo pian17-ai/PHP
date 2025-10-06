@@ -1,0 +1,1 @@
+<h1>Hellow I'm <?= $data['name'] ?> I use major is <?= $data['major'] ?>, and I <?= $data['age'] ?> years old</h1>
