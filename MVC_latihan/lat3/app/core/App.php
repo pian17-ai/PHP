@@ -8,7 +8,6 @@ class App {
     public function __construct()
     {
         $url = $this->parseURL();
-
         
         if (!empty($url) && file_exists('../app/controllers/' . $url[0] . '.php')) {
             $this->controller = $url[0];
@@ -33,7 +32,7 @@ class App {
     }
 
     public function parseURL() {
-        if ($_GET['url']) {
+        if (isset($_GET['url'])) {
             $url = $_GET['url'];
             $url = rtrim($url, '/');
             $url = filter_var($url, FILTER_SANITIZE_URL);

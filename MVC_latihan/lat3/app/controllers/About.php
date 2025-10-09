@@ -1,11 +1,16 @@
 <?php
 
-class About {
+class About extends Controller {
     public function index() {
-        echo "About/index";
+        $this->view('About/index');
     }
 
     public function aboutme ($name, $job, $age) {
-        echo "Hellow I'm $name, now I work as a $job, and $age years old";
+        $data['title'] = "About me - About";
+        $data['name'] = $name;
+        $data['job'] = $job;
+        $data['age'] = $age;
+
+        $this->view('About/aboutme', $data);
     }
 }
