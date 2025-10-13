@@ -1,11 +1,2 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About page</title>
-</head>
-<body>
-    <h1>Selamat datang di page about</h1>
-</body>
-</html>
+    <h1>Selamat datang di halaman about saya</h1>
+    <p>Halo nama saya <?= $data['name'] ?>, saat ini saya bekerja menjadi <?= $data['job'] ?> di umur <?= $data['age'] ?></p>
