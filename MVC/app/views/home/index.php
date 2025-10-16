@@ -1,7 +1,7 @@
 <!-- Hero Section -->
 <section class="py-5 bg-primary text-white text-center">
   <div class="container">
-    <h1 class="display-4 fw-bold">Welcome to My MVC App</h1>
+    <h1 class="display-4 fw-bold">Welcome to MVC App by <?= $data['name'] ?></h1>
     <p class="lead mb-4">A clean and lightweight PHP MVC structure built with Bootstrap</p>
     <a href="#" class="btn btn-light btn-lg">Get Started</a>
   </div>

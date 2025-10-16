@@ -19,6 +19,8 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link active" href="<?= BASEURL; ?>">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="<?= BASEURL; ?>/About">About</a></li>
+        <li class="nav-item"><a class="nav-link active" href="<?= BASEURL; ?>/Student">Students</a></li>
       </ul>
     </div>
   </div>
