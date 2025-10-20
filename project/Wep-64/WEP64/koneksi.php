@@ -1,8 +1,8 @@
 <?php 
 
     $host = "localhost";
-    $user = "root";
-    $password = "";
+    $user = "pma";
+    $password = "pmapass";
     $database = "dbWEP64";
     $conn = new mysqli($host, $user, $password, $database);
 
