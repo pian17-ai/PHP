@@ -13,14 +13,6 @@ $login_register = "active";
 
 $name = $email = $password = $phone = $address = "";
 
-// if ($data && password_verify($password, $data['password'])) {
-//     session_regenerate_id(true); // mencegah session fixation
-//     $_SESSION['user_id'] = $data['id_user'];
-//     $_SESSION['user_name'] = $data['name'];
-//     header("Location: index.php"); 
-//     exit;
-// }
-
 
 if (isset($_POST['save'])) {
     $data = [
@@ -46,7 +38,7 @@ if (isset($_POST['login'])) {
     if ($data && password_verify($password, $data['password'])) {
         $_SESSION['user_id'] = $data['id_user'];
         $_SESSION['user_name'] = $data['name'];
-        header("Location: index.php"); // pindah ke halaman dashboard
+        header("Location: index.php");
         exit;
     } else {
         $error = "<div class='alert alert-danger'>Email atau Password salah</div>";

@@ -2,25 +2,26 @@
 
 class StudentModel
 {
-    private $dbh; //database handler
-    private $stmt;
+
+    private $table = 'students';
+    private $db;
 
     public function __construct()
     {
-        // data source name
-        $dsn = "mysql:host=localhost;dbname=mymvc";
+        $this->db = new Database;
 
-        try {
-            $this->dbh = new PDO($dsn, 'pma', 'pmapass');
-        } catch (PDOException $e) {
-            die($e->getMessage());
-        }
     }
 
     public function getAllStudents()
     {
-        $this->stmt = $this->dbh->prepare("SELECT * from students");
-        $this->stmt->execute();
-        return $this->stmt->fetchAll(PDO::FETCH_ASSOC);;
+        $this->db->query("SELECT * from " . $this->table);
+        return $this->db->resultSet();
+    }
+
+    public function getStudentById($id) {
+        $this->db->query("SELECT * from " . $this->table . "where id=:id");
+
+        $this->db->bind('id', $id);
+        return $this->db->single();
     }
 }
