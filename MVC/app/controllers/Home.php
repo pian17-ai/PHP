@@ -1,6 +1,6 @@
 <?php
 
-class HomeController extends Controller{
+class Home extends Controller{
     public function index () {
         $data['title'] = 'Home';
         $data['name'] = 'Pian';

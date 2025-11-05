@@ -1,6 +1,6 @@
 <?php
 
-class StudentController extends Controller {
+class Student extends Controller {
     public function index () {
         $data['title'] = 'Students';
         $data['students'] = $this->model('StudentModel')->getAllStudents();

@@ -9,7 +9,6 @@ class StudentModel
     public function __construct()
     {
         $this->db = new Database;
-
     }
 
     public function getAllStudents()
@@ -19,7 +18,7 @@ class StudentModel
     }
 
     public function getStudentById($id) {
-        $this->db->query("SELECT * from " . $this->table . "where id=:id");
+        $this->db->query("SELECT * from " . $this->table . " WHERE id=:id");
 
         $this->db->bind('id', $id);
         return $this->db->single();
