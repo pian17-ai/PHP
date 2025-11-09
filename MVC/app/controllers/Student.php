@@ -18,4 +18,11 @@ class Student extends Controller {
         $this->view('student/detail', $data);
         $this->view('templates/footer');
     }
+
+    public function insert() {
+        if ($this->model('StudentModel')->insert($_POST) > 0) {
+            header('Location: ' . BASEURL . '/Student');
+            exit;
+        }
+    }
 }

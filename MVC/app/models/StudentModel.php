@@ -23,4 +23,20 @@ class StudentModel
         $this->db->bind('id', $id);
         return $this->db->single();
     }
+
+    public function insert($data) {
+        $query =    "INSERT into students
+                    VALUES 
+                    (null, :name, :nrp, :email, :major)";
+
+        $this->db->query($query);
+        $this->db->bind('name', $data['name']);
+        $this->db->bind('nrp', $data['nrp']);
+        $this->db->bind('email', $data['email']);
+        $this->db->bind('major', $data['major']);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
 }
