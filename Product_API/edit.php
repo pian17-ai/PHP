@@ -10,8 +10,9 @@ $conn = new mysqli('localhost', 'pma', 'pmapass', 'db_flutter');
 $id_product = $_POST['id_product'];
 $name_product = $_POST['name_product'];
 $price_product = $_POST['price_product'];
+$image_product = $_POST['image_product'];
 
-$query = $query = mysqli_query($conn, "UPDATE tb_product set name_product='$name_product', price_product='$price_product' where id_product='$id_product'");
+$query = $query = mysqli_query($conn, "UPDATE tb_product set name_product='$name_product', price_product='$price_product', image_product='$image_product' where id_product='$id_product'");
 
 if ($query) {
 	echo json_encode([
