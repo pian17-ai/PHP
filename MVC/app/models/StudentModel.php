@@ -25,18 +25,20 @@ class StudentModel
     }
 
     public function insert($data) {
-        $query =    "INSERT into students
-                    VALUES 
-                    (null, :name, :nrp, :email, :major)";
+        // $query =    "INSERT into students
+        //             VALUES 
+        //             (null, :name, :nrp, :email, :major)";
 
-        $this->db->query($query);
-        $this->db->bind('name', $data['name']);
-        $this->db->bind('nrp', $data['nrp']);
-        $this->db->bind('email', $data['email']);
-        $this->db->bind('major', $data['major']);
+        // $this->db->query($query);
+        // $this->db->bind('name', $data['name']);
+        // $this->db->bind('nrp', $data['nrp']);
+        // $this->db->bind('email', $data['email']);
+        // $this->db->bind('major', $data['major']);
 
-        $this->db->execute();
+        // $this->db->execute();
 
-        return $this->db->rowCount();
+        // return $this->db->rowCount();
+
+        return 0;
     }
 }

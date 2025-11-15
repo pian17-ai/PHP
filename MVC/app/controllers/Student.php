@@ -21,8 +21,12 @@ class Student extends Controller {
 
     public function insert() {
         if ($this->model('StudentModel')->insert($_POST) > 0) {
+            Flasher::setFlash("Success", "Added", "success");
             header('Location: ' . BASEURL . '/Student');
             exit;
+        } else {
+            Flasher::setFlash("Fail", "Added", "danger");
+            header('Location: ' . BASEURL . '/Student');
         }
     }
 }

@@ -1,9 +1,15 @@
 <div class="container">
     <div class="row">
         <div class="col-6 mt-3">
+
+            <div class="row">
+                <?php Flasher::flash(); ?>
+            </div>
+
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">
                 Add Student
             </button>
+
             <br></br>
             <h3>Student List</h3>
             <ul class="list-group">
