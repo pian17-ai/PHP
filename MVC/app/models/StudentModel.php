@@ -17,28 +17,39 @@ class StudentModel
         return $this->db->resultSet();
     }
 
-    public function getStudentById($id) {
+    public function getStudentById($id)
+    {
         $this->db->query("SELECT * from " . $this->table . " WHERE id=:id");
 
         $this->db->bind('id', $id);
         return $this->db->single();
     }
 
-    public function insert($data) {
-        // $query =    "INSERT into students
-        //             VALUES 
-        //             (null, :name, :nrp, :email, :major)";
+    public function insert($data)
+    {
+        $query =    "INSERT into students
+                    VALUES 
+                    (null, :name, :nrp, :email, :major)";
 
-        // $this->db->query($query);
-        // $this->db->bind('name', $data['name']);
-        // $this->db->bind('nrp', $data['nrp']);
-        // $this->db->bind('email', $data['email']);
-        // $this->db->bind('major', $data['major']);
+        $this->db->query($query);
+        $this->db->bind('name', $data['name']);
+        $this->db->bind('nrp', $data['nrp']);
+        $this->db->bind('email', $data['email']);
+        $this->db->bind('major', $data['major']);
 
-        // $this->db->execute();
+        $this->db->execute();
 
-        // return $this->db->rowCount();
+        return $this->db->rowCount();
+    }
 
-        return 0;
+    public function delete($id) {
+        $query = "DELETE from students where id=:id";
+
+        $this->db->query($query);
+        $this->db->bind('id', $id);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
     }
 }
